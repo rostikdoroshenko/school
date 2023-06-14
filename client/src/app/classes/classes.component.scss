@@ -1,0 +1,33 @@
+.container {
+  width: 70%;
+  margin: 20px auto;
+}
+
+mat-card {
+  min-height: 100px;
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+}
+
+mat-card-header {
+  width: 100px;
+}
+
+.spacer {
+  width: 100%;
+}
+
+.delete-btn {
+  margin: 5px;
+
+  mat-icon {
+    margin: auto 0;
+  }
+}
+
+mat-progress-bar {
+  margin: 20px;
+}

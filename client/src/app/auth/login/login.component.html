@@ -1,0 +1,7 @@
+<app-auth-form
+  [formGroup]="formGroup"
+  [submitButtonName]="'LogIn'"
+  [title]="'Login Form'"
+  [isLoading]="!!(authFacade.isAuthLoading$ | async)"
+  (submitEvent)="login()"
+></app-auth-form>

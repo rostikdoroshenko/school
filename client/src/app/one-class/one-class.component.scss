@@ -1,0 +1,16 @@
+mat-card {
+  width: 80%;
+  margin: 2rem auto;
+
+  .add-btn {
+    height: 55px;
+    margin-left: 10px;
+    position: absolute;
+  };
+}
+
+.input-card {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+}

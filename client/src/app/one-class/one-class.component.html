@@ -1,0 +1,29 @@
+<mat-card *ngIf="appFacade.getClass$ | async as oneClass">
+  <mat-card-header>
+    <mat-card-title-group>
+      <mat-card-title>{{ oneClass.name }}</mat-card-title>
+      <mat-card-subtitle></mat-card-subtitle>
+    </mat-card-title-group>
+  </mat-card-header>
+
+  <mat-card class="input-card">
+    <form [formGroup]="formGroup" (ngSubmit)="onSavePupil()">
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput type="text" formControlName="name">
+      </mat-form-field>
+      <button mat-raised-button class="add-btn" type="submit">Add</button>
+    </form>
+  </mat-card>
+
+  <app-pupils
+    *ngIf="oneClass.pupils && oneClass.pupils.length; else empty"
+    [dataSource]="oneClass.pupils">
+  </app-pupils>
+
+  <ng-template #empty>
+    <mat-card>No Pupils in this class</mat-card>
+  </ng-template>
+</mat-card>
+
+<mat-progress-bar mode="indeterminate" *ngIf="appFacade.isClassLoading$ | async"></mat-progress-bar>

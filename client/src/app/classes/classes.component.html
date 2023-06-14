@@ -1,0 +1,41 @@
+<div class="container">
+  <button
+    color="primary"
+    mat-raised-button
+    [disabled]="(appFacade.isClassesLoading$ | async) || (appFacade.isClassLoading$ | async)"
+    (click)="addNewDialog()"
+  >Add new class</button>
+  <div *ngIf="appFacade.getClasses$ | async as classes">
+    <div *ngIf="classes.length > 0; else empty">
+      <mat-card *ngFor="let clas of classes" [routerLink]="['/classes', clas._id]">
+        <mat-card-header>
+          <mat-card-title>{{ clas.name }}</mat-card-title>
+        </mat-card-header>
+        <div class="spacer"></div>
+        <mat-card-actions>
+          <button
+            color="primary"
+            mat-raised-button
+            [disabled]="(appFacade.isClassesLoading$ | async) || (appFacade.isClassLoading$ | async)"
+            (click)="editDialog(clas, $event)"
+          >EDIT</button>
+          <button
+            class="delete-btn"
+            color="warn"
+            mat-raised-button
+            [disabled]="(appFacade.isClassesLoading$ | async) || (appFacade.isClassLoading$ | async)"
+            (click)="deleteClass(clas._id, $event)"
+          ><mat-icon>delete</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    <ng-template #empty>
+      <span>No Classes...</span>
+    </ng-template>
+  </div>
+  <mat-progress-bar
+    mode="indeterminate"
+    *ngIf="(appFacade.isClassesLoading$ | async) || (appFacade.isClassLoading$ | async)"
+  ></mat-progress-bar>
+</div>

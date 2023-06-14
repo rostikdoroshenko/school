@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>{{ title }}</h1>
+<form [formGroup]="formGroup" (ngSubmit)="onSaveClass()">
+  <div mat-dialog-content>
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+  </div>
+  <div class="dialog-actions" mat-dialog-actions>
+    <button mat-button mat-dialog-close="true" type="submit" [disabled]="formGroup.invalid">SAVE</button>
+    <button mat-button mat-dialog-close="true" type="button">CANCEL</button>
+  </div>
+</form>

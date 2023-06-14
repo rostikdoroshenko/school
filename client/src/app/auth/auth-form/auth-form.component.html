@@ -1,0 +1,38 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ title }}</mat-card-title>
+  </mat-card-header>
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        type="email"
+        formControlName="email">
+      <mat-error *ngIf="formGroup.controls['email'].invalid && formGroup.controls['email'].touched">
+        Please enter a correct email
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        formControlName="password">
+      <mat-error *ngIf="formGroup.controls['password'].invalid && formGroup.controls['password'].touched">
+        Please enter a valid password
+      </mat-error>
+    </mat-form-field>
+    <mat-card-actions>
+      <button
+        [disabled]="formGroup.invalid"
+        color="primary"
+        mat-raised-button
+        type="submit">
+        {{ submitButtonName }}
+      </button>
+    </mat-card-actions>
+  </form>
+  <mat-card-footer>
+    <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+  </mat-card-footer>
+</mat-card>

@@ -1,0 +1,19 @@
+<div class="container">
+  <app-header (onMenuClickHandler)="sidenav.toggle()"></app-header>
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav
+      #sidenav
+    >
+      <div
+        class="link"
+        [routerLink]="['classes', clas._id]"
+        (click)="sidenav.toggle()"
+        *ngFor="let clas of appFacade.getClasses$ | async as classes">
+        {{ clas.name }}
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
